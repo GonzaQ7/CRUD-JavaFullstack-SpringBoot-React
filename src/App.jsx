@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import Dado from "./components/Dado";
+import Contador from "./components/Contador";
 
 function App() {
+  /*
   function generarValor() {
     return Math.trunc(Math.random() * 6) + 1;
   }
@@ -16,14 +18,17 @@ function App() {
   const [valor1, setvalor1] = useState(0);
   const [valor2, setvalor2] = useState(0);
   const [valor3, setvalor3] = useState(0);
+  */
+  function realizarConteo() {
+    setNumero(numero + 1);
+  }
+  const [numero, setNumero] = useState(0);
 
   return (
     <div>
-      <Dado valor={valor1} />
-      <Dado valor={valor2} />
-      <Dado valor={valor3} />
-      <br></br>
-      <button onClick={tirar}>Tirar Dados</button>
+      <Contador valor={numero} />
+      <br />
+      <button onClick={realizarConteo}>+</button>
     </div>
   );
 }
