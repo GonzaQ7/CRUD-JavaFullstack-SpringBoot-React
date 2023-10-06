@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
+import CoordenadaFlecha from "./components/CoordenadaFlecha";
 
 function App() {
-  const [texto, setTexto] = useState("");
+  const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    document.title = texto;
-  }, [texto]);
-
-  function cambiar(e) {
-    setTexto(e.target.value);
+  function ocultar() {
+    setVisible(false);
   }
 
   return (
     <div>
-      <p>
-        <input type="text" onChange={cambiar} />
-      </p>
-      <p>{texto}</p>
+      {visible ? <CoordenadaFlecha /> : <p>Se oculto la coordenada</p>}
+      <button onClick={ocultar}>Ocultar</button>
     </div>
   );
 }
