@@ -1,34 +1,32 @@
 import { useState } from "react";
 import "./App.css";
-import Dado from "./components/Dado";
-import Contador from "./components/Contador";
+import ListadoResultados from "./components/ListadoResultados";
+import FormularioNumeros from "./components/FormularioNumeros";
 
 function App() {
-  /*
-  function generarValor() {
-    return Math.trunc(Math.random() * 6) + 1;
-  }
+  const [operaciones, setOperaciones] = useState([]);
 
-  function tirar() {
-    setvalor1(generarValor());
-    setvalor2(generarValor());
-    setvalor3(generarValor());
-  }
+  function sumar(event) {
+    event.preventDefault();
+    const v1 = parseInt(event.target.valor1.value);
+    const v2 = parseInt(event.target.valor1.value);
+    const suma = v1 + v2;
 
-  const [valor1, setvalor1] = useState(0);
-  const [valor2, setvalor2] = useState(0);
-  const [valor3, setvalor3] = useState(0);
-  */
-  function realizarConteo() {
-    setNumero(numero + 1);
+    const nuevo = {
+      resultado: suma,
+      valor1: v1,
+      valor2: v2,
+    };
+    setOperaciones([nuevo, ...operaciones]);
+
+    event.target.valor1.value = "";
+    event.target.valor2.value = "";
   }
-  const [numero, setNumero] = useState(0);
 
   return (
     <div>
-      <Contador valor={numero} />
-      <br />
-      <button onClick={realizarConteo}>+</button>
+      <FormularioNumeros onSumar={sumar} />
+      <ListadoResultados resultados={operaciones} />
     </div>
   );
 }

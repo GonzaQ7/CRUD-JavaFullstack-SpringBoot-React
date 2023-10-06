@@ -1,0 +1,16 @@
+function FormularioNumeros(props) {
+  return (
+    <div>
+      <form onSubmit={props.onSumar}>
+        <p>
+          Ingrese el primer valor: <input type="text" name="valor1" />
+        </p>
+        <p>
+          Ingrese el segundo valor: <input type="text" name="valor2" />
+        </p>
+        <input type="submit" />
+      </form>
+    </div>
+  );
+}
+export default FormularioNumeros;
